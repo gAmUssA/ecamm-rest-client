@@ -1,0 +1,23 @@
+{
+  "name": "ecamm-rest-client",
+  "version": "1.0.0",
+  "description": "Ecamm Live rest client for remote control",
+  "main": "index.ts",
+  "dependencies": {
+    "@types/node": "^14.0.23",
+    "typed-rest-client": "^1.7.3",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "bonjour": "^3.5.0",
+    "tslint": "5.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "start": "node --experimental-modules index.js",
+    "lint": "tslint --project tsconfig.json -t stylish"
+  },
+  "author": "Viktor Gamov",
+  "license": "MIT"
+}
