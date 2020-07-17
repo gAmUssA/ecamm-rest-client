@@ -1,5 +1,5 @@
 import {RestClient} from 'typed-rest-client/RestClient';
-import {DisplayInfo, Scenes} from './client';
+import {Cameras, DisplayInfo, Scenes} from './client';
 
 const bonjour = require('bonjour')();
 
@@ -18,6 +18,9 @@ async function test(restClient: RestClient): Promise<void> {
     console.log(resultPrev);
     currentSceneId = await scenes.getCurrentScene();
     console.log(`Scene id after next and prev ${currentSceneId}`);
+
+    const cameras = await new Cameras(restClient).getInputs();
+    console.log(cameras);
 
     /*let scenesList = await scenes.getSceneList();
     console.log(scenesList)*/

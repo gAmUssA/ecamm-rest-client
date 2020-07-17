@@ -1,0 +1,80 @@
+= Ecamm Live Rest Client prototype
+Viktor Gamov <viktor@confluent.io>, © 2020 Confluent, Inc.
+2020-07-16
+:revdate: 2020-07-16 23:55:01 -0600
+:linkattrs:
+:ast: &ast;
+:y: &#10003;
+:n: &#10008;
+:y: icon:check-sign[role="green"]
+:n: icon:check-minus[role="red"]
+:c: icon:file-text-alt[role="blue"]
+:toc: auto
+:toc-placement: auto
+:toc-position: auto
+:toc-title: Table of content
+:toclevels: 3
+:idprefix:
+:idseparator: -
+:sectanchors:
+:icons: font
+:source-highlighter: highlight.js
+:highlightjs-theme: idea
+:experimental:
+
+A small library to control Ecamm Live streaming software
+
+toc::[]
+
+The purpose of this prototype is demonstrate how to interact with Ecamm Live software via remote control protocol used by for example Stream Deck software.
+
+== How to test
+
+=== Prerequisite 
+
+* Download Ecamm Live from http://www.ecamm.com/mac/ecammlive/download.html
+* Start the app
+* Create a few scenes
+
+=== Development
+
+* nodejs v12.18.2
+* typescript
+
+[source,shell]
+.install and run
+----
+> npm install
+> npm run tsc && node index.js
+
+
+> ecamm-rest-client@1.0.0 tsc /Users/viktor/projects/companion-experiments/ecamm-rest-client
+> tsc
+
+{
+  Mute: 'no',
+  Viewers: '0',
+  CurrentScene: '503B47CC-2551-4A72-8D92-6768F81B96FD',
+  ButtonLabel: 'OK',
+  PauseButtonLabel: 'None'
+}
+Scene id before 503B47CC-2551-4A72-8D92-6768F81B96FD
+Clicked it!
+Clicked it!
+Scene id after next and prev 503B47CC-2551-4A72-8D92-6768F81B96FD
+[
+  { title: 'Blackmagic Design', UUID: '0x12000001edbbe55' },
+  { title: 'iGlasses', UUID: 'iGlasses' },
+  { title: 'OBS Virtual Camera', UUID: 'obs-virtual-cam-device' },
+  { title: 'USB Capture HDMI 4K+ #2', UUID: '0x350000029350009' },
+  { title: 'Wirecast Virtual Camera', UUID: '1-WirecastVirtualCamera' }
+]
+----
+
+=== Note from Ecamm Live developers on host and port discovery
+
+----
+It uses Bonjour auto-discovery, which means the port is not fixed.  
+Any device on the local network should be able to discovery the service and connect. 
+In the case of the Stream Deck plugin, it check to ensure that it's talking to the local host.
+----
